@@ -28,13 +28,13 @@ Total distributed hadoop in docker cluster in **less than 5 minutes**,  created 
 *Other packages updating...*
 
 ### Build Base Image
- - Put your hadoop package under the /base path, the build the base image locally.
+ - Put your hadoop package under the /base path, then build the base image locally.
   
      ```bash
      cd ./base
      make all
      ```
-  After a few minutes, the base image(smm/hadoop.base:3.3.1) will bu build successfully.
+  After a few minutes, the base image(smm/hadoop.base:3.3.1) will be build successfully.
 
 ### Create Share Volume Mount Path
  - I have mounted two path to share ssh_key and hadoop etc files among the docker cluster simply. These files **must** be the same among different docker containers.
@@ -53,7 +53,7 @@ Total distributed hadoop in docker cluster in **less than 5 minutes**,  created 
   ```
   if you want to run it int the background, you can add `-d` param.
 
-  If everything is OK, you can see `Hdfs done...` at end. If without `-d`, the process may be wait for a little long time at `permission set`(About half minute or longer). With `-d` , it will cost just few seconds. 
+  If everything is OK, you can see `Hdfs done...` at end. If without `-d`, the process may  wait for a little long time at `permission set`(About half minute or longer). With `-d` , it will cost just few seconds. 
 
 ### Destroy the cluster and images
 - run the destroy shell
