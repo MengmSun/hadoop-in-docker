@@ -1,0 +1,61 @@
+version: '3.1'
+
+services:
+  hadoop-master:
+    build:
+      context: ./hadoop-master
+      dockerfile: Dockerfile
+    image: smm/hadoop-master:3.3.1
+    container_name: hadoop-master
+    privileged: true
+    volumes:
+      - ./share:/share
+      - ./.secret:/.secret
+    restart: always
+    hostname: hadoop-master
+    networks:
+      - hadoop
+    
+      
+
+  hadoop-slave2:
+    build:
+      context: ./hadoop-slave
+      dockerfile: Dockerfile
+    image: smm/hadoop-slave:3.3.1
+    depends_on:
+      - hadoop-master
+    container_name: hadoop-slave2
+    privileged: true
+    volumes:
+      - ./share:/share
+      - ./.secret:/.secret
+    #  - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    restart: always
+    hostname: hadoop-slave2
+    networks:
+      - hadoop
+    
+
+  hadoop-slave3:
+    build:
+      context: ./hadoop-slave
+      dockerfile: Dockerfile
+    image: smm/hadoop-slave:3.3.1
+    depends_on:
+      - hadoop-master
+    container_name: hadoop-slave3
+    privileged: true
+    volumes:
+      - ./share:/share
+      - ./.secret:/.secret
+    #  - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    restart: always
+    hostname: hadoop-slave3
+    networks:
+      - hadoop
+    
+
+
+networks:
+  hadoop:

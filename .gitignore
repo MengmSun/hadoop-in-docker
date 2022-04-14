@@ -1,0 +1,9 @@
+.DS_Store
+.secret/
+share/*
+share
+base/apache-zookeeper-3.6.3-bin.tar.gz
+base/hbase-2.4.8-bin.tar.gz
+base/hadoop-3.3.1-aarch64.tar.gz
+base/init.sh
+.vscode/
