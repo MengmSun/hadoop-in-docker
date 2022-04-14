@@ -51,7 +51,7 @@ Total distributed hadoop in docker cluster in **less than 5 minutes**,  created 
   docker-compose up -f s2-docker-compose.yml
   # docker-compose up -f s2-docker-compose.yml -d
   ```
-  if you want to run it int the background, you can add `-d` param.
+  if you want to run it in the background, you can add `-d` param.
 
   If everything is OK, you can see `Hdfs done...` at end. If without `-d`, the process may  wait for a little long time at `permission set`(About half minute or longer). With `-d` , it will cost just few seconds. 
 
