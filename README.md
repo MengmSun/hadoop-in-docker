@@ -1,12 +1,13 @@
 # hadoop-in-docker
 
 
-Total distributed hadoop in docker cluster built in **less than 5 minutes**,  created by docker-compose. Now it can support HDFS file system, and I will add Hbase ,Zookeeper and other hadoop family members to the docker cluster.
+Total distributed hadoop in docker cluster built in **less than 5 minutes**,  created by docker-compose. Now it can support HDFS file system, and I will add Hbase ,Zookeeper and other hadoop family members to the docker cluster. [Example Install Video](./test.mp4)
 
 *If you have any suggestion or question, feel free to contact me, and welcome to [issues](https://github.com/MengmSun/hadoop-in-docker/issues).* :smiley:
 
 
-<iframe width="100%" height="400" src="./test.mp4" frameborder="0" allowfullscreen></iframe>
+
+
 
 - [hadoop-in-docker](#hadoop-in-docker)
     - [Build Base Image](#build-base-image)
