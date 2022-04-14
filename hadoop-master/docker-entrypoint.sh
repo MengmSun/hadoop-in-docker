@@ -112,6 +112,13 @@ EOF
     echo "workers done..."
 }
 
+# change log4j.properties
+_set_log4j_properties() {
+    cd /usr/local/hadoop-3.3.1/etc/hadoop
+    sed -i '$alog4j.logger.org.apache.hadoop.util.NativeCodeLoader=ERROR\n' log4j.properties
+    echo "log4j.properties done..."
+}
+
 # copy etc files to /share
 _copy_etc_files() {
      cd /usr/local/hadoop-3.3.1/etc
@@ -147,6 +154,7 @@ _sshd_host
 _set_core_site_xml
 _set_hdfs_site_xml
 _set_workers
+_set_log4j_properties
 _copy_etc_files
 _set_permission
 _init_hdfs
