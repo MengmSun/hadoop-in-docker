@@ -6,7 +6,7 @@ Total distributed hadoop in docker cluster built in **less than 5 minutes**,  cr
 *If you have any suggestion or question, feel free to contact me, and welcome to [issues](https://github.com/MengmSun/hadoop-in-docker/issues).* :smiley:
 
 
-<video id="video" controls="" src="./test.mp4" preload="true"></video>
+<iframe width="100%" height="400" src="./test.mp4" frameborder="0" allowfullscreen></iframe>
 
 - [hadoop-in-docker](#hadoop-in-docker)
     - [Build Base Image](#build-base-image)
