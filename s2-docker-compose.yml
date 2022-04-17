@@ -13,6 +13,8 @@ services:
       - ./.secret:/.secret
     restart: always
     hostname: hadoop-master
+    ports:
+      - 19888:19888
     networks:
       - hadoop
     

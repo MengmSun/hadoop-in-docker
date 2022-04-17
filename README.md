@@ -1,7 +1,7 @@
 # hadoop-in-docker
 
 
-Total distributed hadoop in docker cluster built in **less than 5 minutes**,  created by docker-compose. Now it can support HDFS file system, and I will add Hbase ,Zookeeper and other hadoop family members to the docker cluster. [Example Install Video](./test.mp4)
+Total distributed hadoop in docker cluster built in **less than 5 minutes**,  created by docker-compose. Now it can support HDFS file system and MapReduce, and I will add Hbase ,Zookeeper and other hadoop family members to the docker cluster. [Example Install Video](./test.mp4)
 
 *If you have any suggestion or question, feel free to contact me, and welcome to [issues](https://github.com/MengmSun/hadoop-in-docker/issues).* :smiley:
 
@@ -27,7 +27,7 @@ Total distributed hadoop in docker cluster built in **less than 5 minutes**,  cr
 **Packages:**
 - hadoop-3.3.1
   
-  You can install tar.gz from [hadoop list](https://archive.apache.org/dist/hadoop/common/hadoop-3.3.1/) and choose other version. But if you have no interest in change the source file or DIY ,you'd better install the version of 3.3.1. I'll fix up the repo to support many versions with little configuration later.
+  You can install hadoop-3.3.1.tar.gz from [hadoop list](https://archive.apache.org/dist/hadoop/common/hadoop-3.3.1/) and choose other version. But if you have no interest in change the source file or DIY ,you'd better install the version of 3.3.1. I'll fix up the repo to support many versions with little configuration later.
 
 *Other packages updating...*
 
@@ -57,7 +57,22 @@ Total distributed hadoop in docker cluster built in **less than 5 minutes**,  cr
   ```
   if you want to run it in the background, you can add `-d` param.
 
-  If everything is OK, you can see `Hdfs done...` at end. If without `-d`, the process may  wait for a little long time at `permission set`(About half minute or longer). With `-d` , it will cost just few seconds. 
+  If everything is OK, you can see `Hdfs done...` at end. If without `-d`, the process may  wait for a little long time at `permission set`(About half minute or longer). With `-d` , it will cost just a few seconds.
+
+  You can check hadoop processes in the master node by:
+  ```bash
+  docker exec -it hadoop-master su # enter the container as root
+  su hdfs # change user to hdfs
+  jps # look at hdfs java process
+  # If everything is OK , jps result:(pid may be different)
+  577 DataNode
+  1651 JobHistoryServer
+  1091 ResourceManager
+  2454 Jps
+  795 SecondaryNameNode
+  1230 NodeManager
+  431 NameNode
+  ``` 
 
 ### Destroy the cluster and images
 - run the destroy shell

@@ -201,6 +201,24 @@ _init_hdfs() {
     echo "Hdfs done..."
 }
 
+# yarn start
+_start_yarn() {
+    echo "Waiting for hdfs done..."
+    sleep 2s
+    su -hdfs -c "start-yarn.sh"
+    echo "yarn starting..."
+    echo "yarn done..."
+}
+
+# mapreduce start
+_start_mapreduce() {
+    echo "Waiting for yarn done..."
+    sleep 2s
+    su -hdfs -c "mapred --daemon start historyserver"
+    echo "historyserver starting..."
+    echo "historyserver done..."
+}
+
 
 # main
 
@@ -215,7 +233,9 @@ _set_workers
 _set_log4j_properties
 _copy_etc_files
 _set_permission
-#_init_hdfs
+_init_hdfs
+_start_yarn
+_start_mapreduce
 
 tail -f /dev/null
 
