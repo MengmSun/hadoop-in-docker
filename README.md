@@ -11,7 +11,7 @@ Total distributed hadoop in docker cluster built in **less than 5 minutes**,  cr
 
 - [hadoop-in-docker](#hadoop-in-docker)
     - [Build Base Image](#build-base-image)
-    - [Create Share Volume Mount Path](#create-share-volume-mount-path)
+    - [Create Share Volume Mount Path(This Step Can be Skipped Cause it can be created automatically)](#create-share-volume-mount-paththis-step-can-be-skipped-cause-it-can-be-created-automatically)
     - [Build&Start hadoop docker cluster](#buildstart-hadoop-docker-cluster)
     - [Destroy the cluster and images](#destroy-the-cluster-and-images)
     - [Other test commands](#other-test-commands)
@@ -40,7 +40,7 @@ Total distributed hadoop in docker cluster built in **less than 5 minutes**,  cr
      ```
   After a few minutes, the base image(smm/hadoop.base:3.3.1) will be build successfully.
 
-### Create Share Volume Mount Path
+### Create Share Volume Mount Path(This Step Can be Skipped Cause it can be created automatically)
  - I have mounted two path to share ssh_key and hadoop etc files among the docker cluster simply. These files **must** be the same among different docker containers.
 
     ```bash
