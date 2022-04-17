@@ -101,6 +101,62 @@ _set_hdfs_site_xml() {
 
 }
 
+# change mapred-site.xml
+_set_mapred_site_xml() {
+    cd /usr/local/hadoop-3.3.1/etc/hadoop
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>mapreduce.framework.name</name>\n\
+    \<value>yarn</value>\n\
+    \</property>\n' mapred-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>mapreduce.job.ubertask.enable</name>\n\
+    \<value>true</value>\n\
+    \</property>\n' mapred-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>mapreduce.jobhistory.address</name>\n\
+    \<value>hadoop-master:10020</value>\n\
+    \</property>\n' mapred-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>mapreduce.jobhistory.webapp.address</name>\n\
+    \<value>hadoop-master:19888</value>\n\
+    \</property>\n' mapred-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>yarn.app.mapreduce.am.env</name>\n\
+    \<value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>\n\
+    \</property>\n' mapred-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>mapreduce.map.env</name>\n\
+    \<value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>\n\
+    \</property>\n' mapred-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>mapreduce.reduce.env</name>\n\
+    \<value>HADOOP_MAPRED_HOME=${HADOOP_HOME}</value>\n\
+    \</property>\n' mapred-site.xml
+    echo "mapred-site.xml done..."
+}
+
+# change yarn-site.xml
+_set_yarn_site_xml() {
+    cd /usr/local/hadoop-3.3.1/etc/hadoop
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>yarn.resourcemanager.hostname</name>\n\
+    \<value>hadoop-master</value>\n\
+    \</property>\n' yarn-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>yarn.nodemanager.aux-services</name>\n\
+    \<value>mapreduce_shuffle</value>\n\
+    \</property>\n' yarn-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>yarn.nodemanager.vmem-check-enabled</name>\n\
+    \<value>false</value>\n\
+    \</property>\n' yarn-site.xml
+    sed -i '/^<configuration>/a <property>\n\
+    \<name>yarn.nodemanager.pmem-check-enabled</name>\n\
+    \<value>false</value>\n\
+    \</property>\n' yarn-site.xml
+    echo "yarn-site.xml done..."
+}
+
 # change workers
 _set_workers() {
     cd /usr/local/hadoop-3.3.1/etc/hadoop
@@ -143,6 +199,8 @@ _set_hdfs_env
 _sshd_host
 _set_core_site_xml
 _set_hdfs_site_xml
+_set_mapred_site_xml
+_set_yarn_site_xml
 _set_workers
 _set_log4j_properties
 _set_permission
